@@ -41,10 +41,25 @@ def home():
 
         return redirect("/")
 
-    tasks = conn.execute("SELECT * FROM tasks").fetchall()
+    filter_type = request.args.get("filter", "all")
+
+    if filter_type == "active":
+        tasks = conn.execute(
+            "SELECT * FROM tasks WHERE completed = 0"
+        ).fetchall()
+
+    elif filter_type == "done":
+        tasks = conn.execute(
+            "SELECT * FROM tasks WHERE completed = 1"
+        ).fetchall()
+
+    else:
+        tasks = conn.execute("SELECT * FROM tasks").fetchall()
+
     conn.close()
 
-    return render_template("index.html", tasks=tasks)
+    return render_template("index.html", tasks=tasks, filter_type=filter_type)
+
 
 
 @app.route("/delete/<int:task_id>")

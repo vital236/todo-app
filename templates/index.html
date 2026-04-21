@@ -12,15 +12,16 @@
             padding-top: 50px;
         }
 
+
         .container {
             background: white;
-            padding: 20px;
-            border-radius: 10px;
-            width: 400px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 25px;
+            border-radius: 12px;
+            width: 420px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
 
-        h1 {
+            h1 {
             text-align: center;
         }
 
@@ -36,8 +37,14 @@
         }
 
         button {
-            padding: 8px 12px;
-            cursor: pointer;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #0056b3;
         }
 
         ul {
@@ -46,10 +53,11 @@
         }
 
         li {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px;
-            border-bottom: 1px solid #eee;
+            transition: 0.2s;
+        }
+
+        li:hover {
+            background: #f8f9fa;
         }
 
         .done {
@@ -58,9 +66,16 @@
         }
 
         a {
-            margin-left: 5px;
             text-decoration: none;
+            color: #007bff;
+            margin: 0 5px;
         }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+
     </style>
 </head>
 
@@ -68,7 +83,13 @@
 
 <div class="container">
     <h1>📝 TODO List</h1>
-
+    
+    <div style="margin-bottom: 15px; text-align: center;">
+        <a href="/?filter=all">Все</a> |
+        <a href="/?filter=active">Активные</a> |
+        <a href="/?filter=done">Выполненные</a>
+    </div>
+    
     <form method="POST">
         <input type="text" name="task" placeholder="Новая задача">
         <button type="submit">Добавить</button>
