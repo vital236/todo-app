@@ -11,6 +11,20 @@ def get_db_connection():
     return conn
 
 
+def init_db():
+    conn = get_db_connection()
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS tasks (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            content TEXT NOT NULL,
+            completed INTEGER NOT NULL DEFAULT 0
+        )
+    """)
+    conn.commit()
+    conn.close()
+
+init_db()
+
 @app.route("/", methods=["GET", "POST"])
 def home():
     conn = get_db_connection()
