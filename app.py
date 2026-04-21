@@ -1,9 +1,9 @@
 import sqlite3
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash, get_flashed_messages
 import os
 
 app = Flask(__name__)
-
+app.secret_key = "dev"
 
 def get_db_connection():
     conn = sqlite3.connect("database.db")
@@ -38,6 +38,7 @@ def home():
                 (task, 0)
             )
             conn.commit()
+            flash("Задача добавлена ✔️")
 
         return redirect("/")
 
@@ -90,7 +91,15 @@ def toggle(task_id):
     conn.close()
 
     return redirect("/")
-    
+
+@app.route("/clear_done")
+def clear_done():
+    conn = get_db_connection()
+    conn.execute("DELETE FROM tasks WHERE completed = 1")
+    conn.commit()
+    conn.close()
+    return redirect("/")
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
