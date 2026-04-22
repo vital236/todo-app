@@ -86,6 +86,9 @@
             font-size: 14px;
         }
         @media (max-width: 600px) {
+            body {
+                background: #18181b;
+            }
             .container {
                 width: 100%;
                 max-width: 100%;
