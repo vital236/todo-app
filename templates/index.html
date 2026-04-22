@@ -1,98 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>TODO App</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            display: flex;
-            justify-content: center;
-            padding-top: 50px;
-        }
+    
 
-
-        .container {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            width: 420px;
-            max-width: 95%;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-
-            h1 {
-            text-align: center;
-        }
-
-        form {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        input {
-            flex: 1;
-            padding: 8px;
-        }
-
-        button {
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-
-        button:hover {
-            background: #0056b3;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            border-radius: 6px;
-            margin-bottom: 5px;
-            background: #fafafa;
-            
-        }
-
-        li:hover {
-            background: #f8f9fa;
-        }
-
-        .done {
-            text-decoration: line-through;
-            color: gray;
-        }
-
-        a {
-            text-decoration: none;
-            color: #007bff;
-            margin: 0 5px;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-        @media (max-width: 600px) {
-            form {
-                flex-direction: column;
-            }
-
-            button {
-                width: 100%;
-            }
-        }
-
-    </style>
 </head>
 
 <body>
